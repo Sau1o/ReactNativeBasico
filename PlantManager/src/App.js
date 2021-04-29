@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -21,6 +22,7 @@ const App = () => {
       <Image
         style={styles.image}
         source={require('../src/assets/watering.png')}
+        resizeMode="contain"
       />
 
       <Text style={styles.subtitle}>
@@ -43,8 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   image: {
-    width: 292,
-    height: 284,
+    height: Dimensions.get('window').width * 0.7,
   },
   title: {
     fontSize: 32,
