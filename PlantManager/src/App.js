@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,24 +16,26 @@ import Colors from './styles/colors/Colors';
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        Gerencie {'\n'}suas plantas {'\n'} de forma fácil
-      </Text>
+      <KeyboardAvoidingView>
+        <Text style={styles.title}>
+          Gerencie {'\n'}suas plantas {'\n'} de forma fácil
+        </Text>
 
-      <Image
-        style={styles.image}
-        source={require('../src/assets/watering.png')}
-        resizeMode="contain"
-      />
+        <Image
+          style={styles.image}
+          source={require('../src/assets/watering.png')}
+          resizeMode="contain"
+        />
 
-      <Text style={styles.subtitle}>
-        Não esqueça de regar suas plantas. Nós cuidamos de lembrar você sempre
-        que precisar
-      </Text>
+        <Text style={styles.subtitle}>
+          Não esqueça de regar suas plantas. Nós cuidamos de lembrar você sempre
+          que precisar
+        </Text>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.7}>
-        <Icon name="navigate-next" size={30} color={Colors.heading} />
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+          <Icon name="navigate-next" size={30} color={Colors.heading} />
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
