@@ -1,8 +1,9 @@
 import React from 'react';
-import Main from './pages/Main';
+//import Main from './pages/Main';
+import Book from './pages/Book';
 
 const App = () => {
-  return <Main />;
+  return <Book />;
 };
 
 export default App;
