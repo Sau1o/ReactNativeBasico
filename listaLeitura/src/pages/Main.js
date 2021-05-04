@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Main = () => {
+const Main = ({navigation}) => {
   const data = [
     {
       id: '1',
@@ -31,7 +31,9 @@ const Main = () => {
     <View style={styles.container}>
       <View style={styles.toolBox}>
         <Text style={styles.title}>Lista de Leitura</Text>
-        <TouchableOpacity style={styles.toolBoxButton}>
+        <TouchableOpacity
+          style={styles.toolBoxButton}
+          onPress={() => navigation.navigate('Book')}>
           <Icon name="add" color="white" size={14} />
         </TouchableOpacity>
       </View>
@@ -51,7 +53,7 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 5,
+    padding: 10,
     backgroundColor: '#fff',
   },
   toolBox: {

@@ -1,9 +1,21 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-//import Main from './pages/Main';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Main from './pages/Main';
 import Book from './pages/Book';
 
+const Stack = createStackNavigator();
+
 const App = () => {
-  return <Book />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Book" component={Book} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default App;

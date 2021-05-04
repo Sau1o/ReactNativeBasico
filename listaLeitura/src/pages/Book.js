@@ -9,7 +9,7 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Book = () => {
+const Book = ({navigation}) => {
   const [title, onChangeTitle] = useState('');
   return (
     <View style={styles.container}>
@@ -38,7 +38,11 @@ const Book = () => {
         <Text style={styles.saveButtonText}>Cadastrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.cancelButton}>
+      <TouchableOpacity
+        style={styles.cancelButton}
+        onPress={() => {
+          navigation.navigate('Main');
+        }}>
         <Text style={styles.cancelButtonText}>Cancelar</Text>
       </TouchableOpacity>
     </View>
