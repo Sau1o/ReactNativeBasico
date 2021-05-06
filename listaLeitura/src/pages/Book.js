@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -26,6 +26,8 @@ const Book = ({navigation}) => {
     console.log('onSave :: entrou aqui');
     if (isValid()) {
     } else {
+      // eslint-disable-next-line no-alert
+      alert('Digite o Título do livro');
     }
   };
 
@@ -54,9 +56,7 @@ const Book = ({navigation}) => {
         <Icon name="photo-camera" color="white" size={24} />
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.saveButton, !isValid() ? styles.saveButtonInvalid : '']}
-        onPress={onSave}>
+      <TouchableOpacity style={styles.saveButton} onPress={onSave}>
         <Text style={styles.saveButtonText}>Cadastrar</Text>
       </TouchableOpacity>
 
@@ -106,9 +106,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
     marginBottom: 20,
-  },
-  saveButtonInvalid: {
-    opacity: 0.5,
   },
   saveButtonText: {
     color: 'white',
