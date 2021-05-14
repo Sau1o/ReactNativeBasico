@@ -8,12 +8,15 @@ const Main = ({navigation}) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    AsyncStorage.getItem('Books').then(data => {
-      console.log('data', data);
-      const book = JSON.parse(data);
-      setBooks([book]);
+    const loadBooks = navigation.addListener('focus', async () => {
+      AsyncStorage.getItem('Books').then(data => {
+        console.log('data', data);
+        const book = JSON.parse(data);
+        setBooks([book]);
+      });
     });
-  }, []);
+    return loadBooks;
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
