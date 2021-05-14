@@ -9,22 +9,34 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Book = ({navigation}) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  //const [photo, setPhoto] = useState();
+  const [photo, setPhoto] = useState();
   //const [read, setRead] = useState();
 
   const isValid = () => {
+    console.log('isValid :: entrou aqui');
     if (title !== undefined && title !== '') {
       return true;
     }
     return false;
   };
 
-  const onSave = () => {
+  const onSave = async () => {
     console.log('onSave :: entrou aqui');
     if (isValid()) {
+      const id = 1;
+      const data = {
+        id,
+        title,
+        description,
+        photo,
+      };
+      console.log(JSON.stringify(data));
+      await AsyncStorage.setItem('Books', JSON.stringify(data));
     } else {
       // eslint-disable-next-line no-alert
       alert('Digite o Título do livro');
@@ -37,9 +49,7 @@ const Book = ({navigation}) => {
       <TextInput
         style={styles.input}
         value={title}
-        onChangeText={text => {
-          setTitle(text);
-        }}
+        onChangeText={setTitle}
         placeholderTextColor="gray"
         placeholder="Nome do Livro"
       />
@@ -56,7 +66,10 @@ const Book = ({navigation}) => {
         <Icon name="photo-camera" color="white" size={24} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.saveButton} onPress={onSave}>
+      <TouchableOpacity
+        //style={[styles.saveButton, !isValid() ? styles.saveButtonInvalid : '']}
+        style={styles.saveButton}
+        onPress={onSave}>
         <Text style={styles.saveButtonText}>Cadastrar</Text>
       </TouchableOpacity>
 
@@ -106,6 +119,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
     marginBottom: 20,
+  },
+  saveButtonInvalid: {
+    opacity: 0.5,
   },
   saveButtonText: {
     color: 'white',
