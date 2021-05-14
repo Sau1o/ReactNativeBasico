@@ -35,8 +35,9 @@ const Book = ({navigation}) => {
         description,
         photo,
       };
-      console.log(JSON.stringify(data));
+      console.log('onSave :: ' + JSON.stringify(data));
       await AsyncStorage.setItem('Books', JSON.stringify(data));
+      navigation.navigate('Main');
     } else {
       // eslint-disable-next-line no-alert
       alert('Digite o Título do livro');
